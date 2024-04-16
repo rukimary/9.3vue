@@ -1,10 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div id="app">
+    <p>Hello, i'm task #8, located in app.vue</p>
+  </div>
+  <vMainWrapperVue />
 </template>
+
+<script>
+import vMainWrapperVue from "./components/v-main-wrapper.vue";
+export default {
+  name: "app",
+  components: { vMainWrapperVue },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -26,5 +33,8 @@ nav {
       color: #42b983;
     }
   }
+}
+body {
+  background: #0a0019;
 }
 </style>

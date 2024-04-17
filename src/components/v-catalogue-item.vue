@@ -9,7 +9,7 @@
       :src="require('../assets/images/' + product_data.image)"
       alt="Image of {{ product_data.name }}"
     />
-    <button class="v-catalogue-item__add_button" @click="sendDataToParent">
+    <button class="v-catalogue-item__add_button" @click="addToCart">
       add me to cart!
     </button>
   </div>
@@ -26,13 +26,10 @@ export default {
       },
     },
   },
-  data() {
-    return {};
-  },
 
   methods: {
-    sendDataToParent() {
-      this.$emit("childCatalogue", this.product_data.article);
+    addToCart() {
+      this.$emit("addToCart", this.product_data);
     },
   },
 };

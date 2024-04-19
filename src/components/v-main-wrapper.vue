@@ -1,20 +1,18 @@
->
 <template>
   <div class="v-main-wrapper">
-    <vCatalogue />
-  </div>
-  <div class="v-main-wrapper__cart">
-    <vCart v-if="CART.length" :cart_data="CART" />
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
   </div>
 </template>
 
 <script>
-import vCatalogue from "./v-catalogue.vue";
-import vCart from "./v-cart.vue";
 import { mapGetters } from "vuex";
+
 export default {
   name: "v-main-wrapper",
-  components: { vCatalogue, vCart },
   data() {
     return {
       title: "hello from v-main-wrapper!",
@@ -28,14 +26,7 @@ export default {
 
 <style lang="scss">
 .v-main-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
-  &__cart {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
 }
 </style>

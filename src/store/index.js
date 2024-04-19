@@ -19,9 +19,15 @@ export default createStore({
       state.products = products;
     },
     SET_CART: (state, product) => {
-      state.cart.push(product);
+      if (product.quantity === 0) {
+        state.cart.push(product);
+        product.quantity++;
+      } else {
+        product.quantity++;
+      }
     },
     REMOVE_FROM_CART: (state, index) => {
+      state.cart[index].quantity = 0;
       state.cart.splice(index, 1);
     },
   },
@@ -46,5 +52,4 @@ export default createStore({
       commit("REMOVE_FROM_CART", index);
     },
   },
-  modules: {},
 });
